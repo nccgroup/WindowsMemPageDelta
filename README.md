@@ -16,7 +16,7 @@ What it does
 -------------
 Simply:
 * rapidly scans Windows processes every 30 seconds
-* enumerates their memory pages, access and state
+* enumerates their memory pages, protection and state
 * identifies differences - noting those that are now executable that were not on the previous run
 
 Performant in that
