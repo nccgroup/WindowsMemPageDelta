@@ -329,6 +329,8 @@ void EnumerateProcesses()
 	DWORD dwPIDArray[4096], dwRet, dwPIDS, intCount;
 	NumOfProcs = 0;
 
+	memset(Procs, 0x00, sizeof(Procs));
+
 	//
 	// Enumerate
 	//
