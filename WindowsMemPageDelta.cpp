@@ -141,9 +141,13 @@ BOOL diffMegaStrucAlt() {
 
 		unsigned int dwPIDMatch = 0;
 		for (dwPIDMatch = 0; dwPIDMatch < 4098; dwPIDMatch++) {
-			if (Procs[dwPIDMatch].PID == megaStruc2[count].PID) {
+			if (Procs[dwPIDMatch].PID == megaStruc2[count].PID) { // this code assumes likelihood of a process being created and assuming a previous PID within 30 seconds is low
 				break;
 			}
+		}
+
+		if (dwPIDMatch == 0) { // New process not seen before
+			continue;
 		}
 
 		// optimization

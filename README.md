@@ -29,6 +29,7 @@ To do
 -------------
 - [ ] Add eventlog output
 - [ ] Make a Windows service
+- [ ] Registry for configuration
 
 
 Output
