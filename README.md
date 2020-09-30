@@ -26,7 +26,6 @@ Performant in that
 * consumes a constant of about 95MB of RAM
 * takes about 8 seconds to run
 
-Why? Catch bad actors doing process injection.
 
 To do
 -------------
