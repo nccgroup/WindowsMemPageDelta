@@ -170,7 +170,7 @@ BOOL diffMegaStrucAlt() {
 				{
 					bBoing = true;
 
-					_ftprintf(stdout, TEXT("Changed,%u,%s,%I64x,%llu,%s,%I64x,%llu,%s\n"), megaStruc2[count].PID, Procs[dwPIDMatch].Name,megaStruc2[count].address, megaStruc2[count].size, Protection(megaStruc2[count].protection), megaStruc[count2].address, megaStruc[count2].size, Protection(megaStruc[count2].protection));
+					_ftprintf(stdout, TEXT("Changed,%u,%s,%I64x,%llu,%s,%s\n"), megaStruc2[count].PID, Procs[dwPIDMatch].Name,megaStruc2[count].address, megaStruc2[count].size, Protection(megaStruc2[count].protection),  Protection(megaStruc[count2].protection));
 					
 					break;
 				}
