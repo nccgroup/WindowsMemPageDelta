@@ -11,6 +11,9 @@ https://github.com/nccgroup/WindowsMemPageDelta
 
 Released under AGPL see LICENSE for more information
 
+Hypothesis
+-------------
+Collect enough telemtry from a Windows estate about which processes create and change memory as/to executeable along with their size and you'll be able to spot the anonamlies. These anomalies may be process injection and other similar malicious activity.
 
 What it does
 -------------
