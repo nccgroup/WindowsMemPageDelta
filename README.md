@@ -33,9 +33,9 @@ To do
 
 Output
 -------------
-The schema for new events are:
+The schema for new events is:
 ```
-TYPE,PID,Process Name,Address,Size,Permissions
+TYPE,PID,Process Name,Address,Size,Protection
 ```
 
 Example
@@ -52,10 +52,10 @@ New,12692,ScriptedSandbox64.exe,1e247af0000,40960,X.....
 ...
 ```
 
-The schema for change events are:
+The schema for change events is:
 
 ```
-TYPE,PID,Process Name,Address,Size,Permissions,Previous Address,Previous Size,Previous Permissions
+TYPE,PID,Process Name,Address,Size,Protection,Previous Protection
 ```
 
 ```
