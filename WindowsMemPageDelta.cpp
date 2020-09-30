@@ -146,7 +146,8 @@ BOOL diffMegaStrucAlt() {
 			}
 		}
 
-		if (dwPIDMatch == 0) { // New process not seen before
+		// noise reduction
+		if (dwPIDMatch == 0 || dwPIDMatch == 4098) { // New process not seen before so don't report
 			continue;
 		}
 
