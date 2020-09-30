@@ -26,13 +26,11 @@ Performant in that
 * consumes a constant of about 95MB of RAM
 * takes about 8 seconds to run
 
-
 To do
 -------------
 - [ ] Add eventlog output
 - [ ] Make a Windows service
 - [ ] Registry for configuration
-
 
 Output
 -------------
