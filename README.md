@@ -25,7 +25,14 @@ Performant in that
 
 Why? Catch bad actors doing process injection.
 
+To do
+-------------
+- [ ] Add eventlog output
+- [ ] Make a Windows service
 
+
+Output
+-------------
 The schema for new events are:
 ```
 TYPE,PID,Process Name,Address,Size,Permissions
