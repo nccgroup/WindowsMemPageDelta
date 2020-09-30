@@ -13,7 +13,7 @@ Released under AGPL see LICENSE for more information
 
 Hypothesis
 -------------
-Collect enough telemetryfrom a Windows host/estate about which processes create and change memory as/to executeable along with their size and you'll be able to spot the anonamlies. These anomalies may be process injection and other similar malicious activity.
+Collect enough telemetry from a Windows host/estate about which processes create and change memory as/to executeable along with their size and you'll be able to spot the anonamlies. These anomalies may be process injection and other similar malicious activity.
 
 What it does
 -------------
