@@ -31,6 +31,19 @@ To do
 - [X] Add eventlog output
 - [X] Make a Windows service
 
+Command Line Options
+-------------
+
+Run it as a console app
+```
+WindowsMemPageDelta.exe -c
+```
+
+Run it as a Windows service
+```
+WindowsMemPageDelta.exe -s
+```
+
 Installation
 -------------
 ```
