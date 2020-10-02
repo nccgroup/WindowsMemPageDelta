@@ -17,7 +17,7 @@ Collect enough telemetry from a Windows host/estate about which processes create
 
 Compatability
 -------------
-Only Windows 10 is supported / test
+Only Windows 10 is supported / tested
 
 What it does
 -------------
