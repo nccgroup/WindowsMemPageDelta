@@ -1,3 +1,14 @@
+/*
+A Microsoft Windows memory page delta tool
+
+Released as open source by NCC Group Plc - http://www.nccgroup.com/
+
+Developed by Ollie Whitehouse, ollie dot whitehouse at nccgroup dot com
+
+https://github.com/nccgroup/WindowsMemPageDelta
+
+Released under AGPL see LICENSE for more information
+*/
 
 // http://stackoverflow.com/questions/7446887/get-command-line-string-of-64-bit-process-from-32-bit-process
 

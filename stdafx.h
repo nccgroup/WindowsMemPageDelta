@@ -1,5 +1,6 @@
-
 /*
+A Microsoft Windows memory page delta tool
+
 Released as open source by NCC Group Plc - http://www.nccgroup.com/
 
 Developed by Ollie Whitehouse, ollie dot whitehouse at nccgroup dot com
@@ -25,6 +26,18 @@ Released under AGPL see LICENSE for more information
 #include <Aclapi.h>
 #include <tlhelp32.h>
 #include <wtsapi32.h>
+#include <strsafe.h>
+#include <winevt.h> 
+#include <evntprov.h>
+#include "Svc.h"
+#include "SvcEventManifest.h"
+#include "EventLogging.h"
+#include "Engine.h"
+
+
+//
+extern bool	bFirstRun;
+extern bool	bService;
 
 // Reimplement from Winternal.h
 typedef NTSTATUS (WINAPI *_NtQueryInformationProcess)(

@@ -1,0 +1,70 @@
+<instrumentationManifest xmlns="http://schemas.microsoft.com/win/2004/08/events">
+  <instrumentation xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:win="http://manifests.microsoft.com/win/2004/08/windows/events">
+
+    <events xmlns="http://schemas.microsoft.com/win/2004/08/events">
+      <!--Publisher Info -->
+      <provider name="NCC Group-Mem Page Delta"
+                   guid="{9CDE86C9-DFB9-463f-B2C5-71EEC232A69C}"
+                   symbol="NCCGROUP_MEMPAGEDELTA_PUBLISHER"
+                   resourceFileName="C:\Windows\NCCGroup-WMPD-EvtLog.dll"
+                   messageFileName="C:\Windows\NCCGroup-WMPD-EvtLog.dll">
+
+        <!--Channel to which this Publisher can publish -->
+        <channels>
+          <channel chid="MyOpChannel"
+                             name="NCC Group-Mem Page Delta/Operational"
+                             type="Operational"
+                             symbol="MEMPAGEDELTAOP"
+                             isolation="Application" enabled="true"/>
+          <channel chid="MyDebugChannel"
+                             name="NCC Group-Mem Page Delta/Debug"
+                             type="Debug"
+                             symbol="MEMPAGEDELTADEBUG"
+                             isolation="Application" enabled="true"/>
+        </channels>
+
+        <!--Event Templates -->
+        <templates>
+          <template tid="SimpleEvent">
+            <data name="Message" inType="win:UnicodeString"/>
+            <UserData>
+              <SimpleEvent xmlns="http://manifests.microsoft.com/win/2004/08/windows/simpleevent">
+                <ExceptionMessage>%1</ExceptionMessage>
+              </SimpleEvent>
+            </UserData>
+          </template>
+        </templates>
+
+        <events>
+          <event value="1"
+                             level="win:Informational"
+                             template="SimpleEvent"
+                             opcode="win:Info"
+                             channel="MyOpChannel"
+                             symbol="DNP_OP_EVENT"
+                             message="$(string.SimpleMessage)"/>
+          <event value="2"
+                        level="win:Informational"
+                        template="SimpleEvent"
+                        opcode="win:Info"
+                        channel="MyDebugChannel"
+                        symbol="DNP_DEBUG_EVENT"
+                        message="$(string.SimpleMessage)"/>
+        </events>
+
+      </provider>
+
+    </events>
+
+  </instrumentation>
+
+  <localization>
+    <resources culture="en-US">
+      <stringTable>
+        <string id="SimpleMessage" value="%1" stringType="string"/>
+      </stringTable>
+    </resources>
+  </localization>
+</instrumentationManifest>
