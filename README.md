@@ -52,8 +52,11 @@ REM -------------------------------------------
 wevtutil install-manifest SvcEventManifest.man
 ```
 
+Logs are in Event Logging
+-------------
+![Eventvwr Example](https://raw.githubusercontent.com/nccgroup/WindowsMemPageDelta/master/images/Eventvwr.PNG)
 
-Output
+Output schema
 -------------
 The schema for new events is:
 ```
