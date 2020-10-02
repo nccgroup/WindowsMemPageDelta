@@ -1,7 +1,7 @@
 Windows Executable Memory Page Delta Reporter
 ======================
 
-A tool to performantly produce telemetry on new or modified Windows memory pages that are now executable every 30 seconds.
+A Windows Service to performantly produce telemetry on new or modified Windows memory pages that are now executable every 30 seconds.
 
 Released as open source by NCC Group Plc - http://www.nccgroup.com/
 
@@ -14,6 +14,10 @@ Released under AGPL see LICENSE for more information
 Hypothesis
 -------------
 Collect enough telemetry from a Windows host/estate about which processes create and change memory as/to executeable along with their size and you'll be able to spot the anonamlies. These anomalies may be malicious activity.
+
+Compatability
+-------------
+Only Windows 10 is supported / test
 
 What it does
 -------------
