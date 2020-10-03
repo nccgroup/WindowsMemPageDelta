@@ -24,6 +24,7 @@ HANDLE	event_log = NULL;
 struct procNfoStuct {
 	DWORD PID;
 	TCHAR Name[MAX_PATH];
+	unsigned long long TotalExecMem = 0;
 };
 #pragma pack(pop)
 
@@ -128,6 +129,41 @@ CONST TCHAR* Protection(DWORD Protection)
 }
 
 //
+// This calculates the total executable memory for a process
+// and then logs it
+//
+void calcTotals() {
+
+	DWORD dwCount = 0;
+	TCHAR logLine[4098];
+
+	while (Procs[dwCount].PID != 0) {
+
+		for (DWORD dwCountInner = 0; dwCountInner < lastEntry2; dwCountInner++) {
+
+			if (megaStruc2[dwCountInner].PID == Procs[dwCount].PID) {
+				Procs[dwCount].TotalExecMem += megaStruc2[dwCountInner].size;
+			}
+			else if(megaStruc2[dwCountInner].PID == 0)
+			{
+				continue;
+			} 
+
+		}
+
+		if (bConsole == true)_stprintf_s(logLine, TEXT("Total,%u,%s,%llu\n"), Procs[dwCount].PID,Procs[dwCount].Name,Procs[dwCount].TotalExecMem);
+		WriteTotal(logLine);
+		
+
+		dwCount++;
+	}
+
+}
+
+//
+// This diffs the new exec pages
+// and then logs it
+//
 BOOL diffMegaStrucAlt() {
 
 	bool bBoing = false;
@@ -174,7 +210,7 @@ BOOL diffMegaStrucAlt() {
 				{
 					bBoing = true;
 
-					//_ftprintf(stdout, TEXT("Changed,%u,%s,%I64x,%llu,%s,%s\n"), megaStruc2[count].PID, Procs[dwPIDMatch].Name, megaStruc2[count].address, megaStruc2[count].size, Protection(megaStruc2[count].protection), Protection(megaStruc[count2].protection));
+					if(bConsole == true)_ftprintf(stdout, TEXT("Changed,%u,%s,%I64x,%llu,%s,%s\n"), megaStruc2[count].PID, Procs[dwPIDMatch].Name, megaStruc2[count].address, megaStruc2[count].size, Protection(megaStruc2[count].protection), Protection(megaStruc[count2].protection));
 					_stprintf_s(logLine, TEXT("Changed,%u,%s,%I64x,%llu,%s,%s\n"), megaStruc2[count].PID, Procs[dwPIDMatch].Name, megaStruc2[count].address, megaStruc2[count].size, Protection(megaStruc2[count].protection), Protection(megaStruc[count2].protection));
 					WriteEvent(logLine);
 
@@ -184,20 +220,26 @@ BOOL diffMegaStrucAlt() {
 
 			if (bBoing == false) {
 				//_ftprintf(stdout, TEXT("New,%u,%s,%I64x,%llu,%s\n"), megaStruc2[count].PID, Procs[dwPIDMatch].Name, megaStruc2[count].address, megaStruc2[count].size, Protection(megaStruc2[count].protection));
-				_stprintf_s(logLine, TEXT("New,%u,%s,%I64x,%llu,%s\n"), megaStruc2[count].PID, Procs[dwPIDMatch].Name, megaStruc2[count].address, megaStruc2[count].size, Protection(megaStruc2[count].protection));
+				if (bConsole == true)_stprintf_s(logLine, TEXT("New,%u,%s,%I64x,%llu,%s\n"), megaStruc2[count].PID, Procs[dwPIDMatch].Name, megaStruc2[count].address, megaStruc2[count].size, Protection(megaStruc2[count].protection));
 				WriteEvent(logLine);
 			}
 		}
 	}
 
+	// Copy across
 	memcpy(megaStruc, megaStruc2, sizeof(megaStruc));
 	lastEntry = lastEntry2;
+
+	// Clean up
+	memset(megaStruc2, 0x00, sizeof(megaStruc2));
 	lastEntry2 = 0;
 
 	return TRUE;
 }
 
+//
 // https://msdn.microsoft.com/en-us/library/windows/desktop/ms684139(v=vs.85).aspx
+//
 BOOL IsWow64()
 {
 	BOOL bIsWow64 = FALSE;
@@ -337,6 +379,7 @@ void EnumerateProcesses()
 	DWORD dwPIDArray[4096], dwRet, dwPIDS, intCount;
 	NumOfProcs = 0;
 
+	// Be clean to ensure no stale data
 	memset(Procs, 0x00, sizeof(Procs));
 
 	//
@@ -365,6 +408,12 @@ void EnumerateProcesses()
 		AnalyzeProc(dwPIDArray[intCount]);
 	}
 
-	if (bFirstRun == false)  diffMegaStrucAlt();
+	// Do the diff calc the totals
+	// and log
+	if (bFirstRun == false)
+	{
+		calcTotals();
+		diffMegaStrucAlt();
+	}
 
 }

@@ -15,4 +15,5 @@ Released under AGPL see LICENSE for more information
 
 void RegisterEvent();
 void WriteEvent(LPWSTR strMessage);
+void WriteTotal(LPWSTR strMessage);
 void UnRegisterEvent();

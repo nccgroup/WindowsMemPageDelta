@@ -37,6 +37,18 @@ void WriteEvent(LPWSTR strMessage) {
 	}
 }
 
+void WriteTotal(LPWSTR strMessage) {
+
+	EVENT_DATA_DESCRIPTOR opEventDesc;
+
+	EventDataDescCreate(&opEventDesc, strMessage, ((ULONG)wcslen(strMessage) + 1) * sizeof(WCHAR));
+
+	ULONG res = EventWrite(hPub, &DNP_TOT_EVENT, 1, &opEventDesc);
+	if (ERROR_SUCCESS != res) {
+		_tprintf(_T("Could not raise operational event  Error = %i\n"), res);
+	}
+}
+
 void UnRegisterEvent() {
 	EventUnregister(hPub);
 }

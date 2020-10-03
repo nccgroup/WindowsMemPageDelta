@@ -37,6 +37,7 @@ Released under AGPL see LICENSE for more information
 
 //
 extern bool	bFirstRun;
+extern bool bConsole;
 extern bool	bService;
 
 // Reimplement from Winternal.h

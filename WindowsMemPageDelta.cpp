@@ -14,6 +14,7 @@ Released under AGPL see LICENSE for more information
 #include "stdafx.h"
 
 bool	bService = false;
+bool	bConsole = false;
 
 // Globals
 HANDLE	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -32,6 +33,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	else if (lstrcmpi(argv[1], TEXT("-c")) == 0)
 	{
 		fwprintf(stdout, L"Running command line\n");
+		bConsole = true;
 
 		// Loop
 		while (true) {
@@ -44,15 +46,14 @@ int _tmain(int argc, _TCHAR* argv[])
 	{
 
 		fwprintf(stdout, L"Service\n");
-
 		bService = true;
 
-		WriteEvent(TEXT("Dispatched.."));
+		WriteEvent((LPWSTR)TEXT("Dispatched.."));
 
 		// TO_DO: Add any additional services for the process to this table.
 		SERVICE_TABLE_ENTRY DispatchTable[] =
 		{
-			{ SVCNAME, (LPSERVICE_MAIN_FUNCTION)SvcMain },
+			{ (LPWSTR)SVCNAME, (LPSERVICE_MAIN_FUNCTION)SvcMain },
 			{ NULL, NULL }
 		};
 
@@ -64,7 +65,7 @@ int _tmain(int argc, _TCHAR* argv[])
 			fwprintf(stdout, L"Error doing dispatch\n");
 		}
 
-		WriteEvent(TEXT("Shutting down"));
+		WriteEvent((LPWSTR)TEXT("Shutting down"));
 		fwprintf(stdout, L"Finished service\n");
 
 	}

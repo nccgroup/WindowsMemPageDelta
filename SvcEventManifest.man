@@ -18,6 +18,11 @@
                              type="Operational"
                              symbol="MEMPAGEDELTAOP"
                              isolation="Application" enabled="true"/>
+          <channel chid="MyTotalChannel"
+                             name="NCC Group-Mem Page Delta/Total"
+                             type="Operational"
+                             symbol="MEMPAGEDELTATOT"
+                             isolation="Application" enabled="true"/>
           <channel chid="MyDebugChannel"
                              name="NCC Group-Mem Page Delta/Debug"
                              type="Debug"
@@ -52,6 +57,15 @@
                         channel="MyDebugChannel"
                         symbol="DNP_DEBUG_EVENT"
                         message="$(string.SimpleMessage)"/>
+          
+          <event value="3"
+                   level="win:Informational"
+                   template="SimpleEvent"
+                   opcode="win:Info"
+                   channel="MyTotalChannel"
+                   symbol="DNP_TOT_EVENT"
+                   message="$(string.SimpleMessage)"/>
+
         </events>
 
       </provider>
