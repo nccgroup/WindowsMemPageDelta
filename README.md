@@ -11,9 +11,13 @@ https://github.com/nccgroup/WindowsMemPageDelta
 
 Released under AGPL see LICENSE for more information
 
+Blog
+-------------
+https://research.nccgroup.com/2020/10/03/tool-windows-executable-memory-page-delta-reporter/
+
 Hypothesis
 -------------
-Collect enough telemetry from a Windows host/estate about which processes create and change memory as/to executeable along with their size and you'll be able to spot the anonamlies. These anomalies may be malicious activity.
+Collect enough telemetry from a Windows host or an entire estate on which processes create and change memory so its executable along with their size and you’ll be able to spot the anomalies. These anomalies may be malicious activity.
 
 Compatability
 -------------
