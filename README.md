@@ -34,6 +34,10 @@ Performant in that
 * consumes a constant of about 95MB of RAM
 * takes about 8 seconds to run
 
+History
+-------------
+Part of this code is based on a project I wrote back in 2014 called WindowsPatchDetector - https://github.com/olliencc/WindowsPatchDetector . This project detected changes in the .text section compared to that on disk.
+
 To do
 -------------
 - [X] Add eventlog output
