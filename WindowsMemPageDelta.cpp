@@ -32,8 +32,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 	else if (lstrcmpi(argv[1], TEXT("-c")) == 0)
 	{
-		fwprintf(stdout, L"Running command line\n");
 		bConsole = true;
+
+		fwprintf(stdout, L"Running ... \n");
 
 		// Loop
 		while (true) {
@@ -45,10 +46,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	else if (lstrcmpi(argv[1], TEXT("-s")) == 0)
 	{
 
-		fwprintf(stdout, L"Service\n");
 		bService = true;
 
-		WriteEvent((LPWSTR)TEXT("Dispatched.."));
+		WriteEvent((LPWSTR)TEXT("Service Starting.."));
 
 		// TO_DO: Add any additional services for the process to this table.
 		SERVICE_TABLE_ENTRY DispatchTable[] =
