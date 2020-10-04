@@ -151,7 +151,10 @@ void calcTotals() {
 
 		}
 
-		if (bConsole == true)_stprintf_s(logLine, TEXT("Total,%u,%s,%llu\n"), Procs[dwCount].PID,Procs[dwCount].Name,Procs[dwCount].TotalExecMem);
+		_stprintf_s(logLine, TEXT("Total,%u,%s,%llu\n"), Procs[dwCount].PID, Procs[dwCount].Name, Procs[dwCount].TotalExecMem);
+		if (bConsole == true) {
+			_ftprintf(stdout, logLine);
+		}
 		WriteTotal(logLine);
 		
 
@@ -210,8 +213,12 @@ BOOL diffMegaStrucAlt() {
 				{
 					bBoing = true;
 
-					if(bConsole == true)_ftprintf(stdout, TEXT("Changed,%u,%s,%I64x,%llu,%s,%s\n"), megaStruc2[count].PID, Procs[dwPIDMatch].Name, megaStruc2[count].address, megaStruc2[count].size, Protection(megaStruc2[count].protection), Protection(megaStruc[count2].protection));
 					_stprintf_s(logLine, TEXT("Changed,%u,%s,%I64x,%llu,%s,%s\n"), megaStruc2[count].PID, Procs[dwPIDMatch].Name, megaStruc2[count].address, megaStruc2[count].size, Protection(megaStruc2[count].protection), Protection(megaStruc[count2].protection));
+
+					if (bConsole == true) {
+						_ftprintf(stdout, logLine);
+					}
+
 					WriteEvent(logLine);
 
 					break;
@@ -219,8 +226,13 @@ BOOL diffMegaStrucAlt() {
 			}
 
 			if (bBoing == false) {
-				//_ftprintf(stdout, TEXT("New,%u,%s,%I64x,%llu,%s\n"), megaStruc2[count].PID, Procs[dwPIDMatch].Name, megaStruc2[count].address, megaStruc2[count].size, Protection(megaStruc2[count].protection));
-				if (bConsole == true)_stprintf_s(logLine, TEXT("New,%u,%s,%I64x,%llu,%s\n"), megaStruc2[count].PID, Procs[dwPIDMatch].Name, megaStruc2[count].address, megaStruc2[count].size, Protection(megaStruc2[count].protection));
+				
+				_stprintf_s(logLine, TEXT("New,%u,%s,%I64x,%llu,%s\n"), megaStruc2[count].PID, Procs[dwPIDMatch].Name, megaStruc2[count].address, megaStruc2[count].size, Protection(megaStruc2[count].protection));
+
+				if (bConsole == true) {
+					_ftprintf(stdout, logLine);
+				}
+
 				WriteEvent(logLine);
 			}
 		}
