@@ -58,6 +58,8 @@ WindowsMemPageDelta.exe -s
 
 Installation
 -------------
+The below is a batch file which can be used to install the service.
+
 ```
 REM -------------------------------------------
 REM This is the installation
