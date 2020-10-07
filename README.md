@@ -88,7 +88,7 @@ There are two buckets
 Individual deltas:
 ![Eventvwr Example for Deltas](https://raw.githubusercontent.com/nccgroup/WindowsMemPageDelta/master/images/Eventvwr.PNG)
 
-Individual deltas:
+Totals:
 ![Eventvwr Example for Totals](https://raw.githubusercontent.com/nccgroup/WindowsMemPageDelta/master/images/Eventvwr2.PNG)
 
 Output schema
