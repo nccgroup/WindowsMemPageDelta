@@ -69,7 +69,7 @@ copy NCCGroup-WMPD-EvtLog.dll c:\Windows\NCCGroup-WMPD-EvtLog.dll
 REM Copy the Main Binary
 copy WindowsMemPageDelta.exe c:\Windows\WindowsMemPageDelta.exe
 REM Create the service
-sc create NCCMemDelta displayname= "NCC Group Memory Delta" binpath= "\"c:\Windows\WindowsMemPageDelta.exe\" -s"
+sc create NCCMemDelta displayname= "NCC Group Memory Delta" binpath= "\"c:\Windows\WindowsMemPageDelta.exe\" -s" start= auto
 REM Start the service
 net start NCCMemDelta
 
