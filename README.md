@@ -19,7 +19,7 @@ Hypothesis
 -------------
 Collect enough telemetry from a Windows host or an entire estate on which processes create and change memory so its executable along with their size and you’ll be able to spot the anomalies. These anomalies may be malicious activity.
 
-Compatability
+Compatibility
 -------------
 Only Windows 10 is supported / tested
 
