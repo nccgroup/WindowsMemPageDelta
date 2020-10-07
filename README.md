@@ -81,11 +81,19 @@ wevtutil install-manifest SvcEventManifest.man
 
 Logs are in Event Logging
 -------------
-![Eventvwr Example](https://raw.githubusercontent.com/nccgroup/WindowsMemPageDelta/master/images/Eventvwr.PNG)
+There are two buckets
+- Individual executable page deltas - to detect specific anomalies
+- Totals of executable memory per process - to aid longitudal monitoring and variance detection
+
+Individual deltas:
+![Eventvwr Example for Deltas](https://raw.githubusercontent.com/nccgroup/WindowsMemPageDelta/master/images/Eventvwr.PNG)
+
+Individual deltas:
+![Eventvwr Example for Totals](https://raw.githubusercontent.com/nccgroup/WindowsMemPageDelta/master/images/Eventvwr2.PNG)
 
 Output schema
 -------------
-The schema for New events is:
+The schema for New delta events is:
 ```
 TYPE,PID,Process Name,Address,Size,Protection
 ```
@@ -104,7 +112,7 @@ New,12692,ScriptedSandbox64.exe,1e247af0000,40960,X.....
 ...
 ```
 
-The schema for Change events is:
+The schema for Change delta events is:
 
 ```
 TYPE,PID,Process Name,Address,Size,Protection,Previous Protection
@@ -122,7 +130,7 @@ Changed,16008,Teams.exe,cc86ea04000,503808,XR....,.RW....
 Changed,16008,Teams.exe,cc86ec84000,503808,XR....,.RW....
 ```
 
-The schema for Total events is (not released yet - only in code):
+The schema for Total events is:
 ```
 TYPE,PID,Process Name,Total Executable Memory Bytes
 ```

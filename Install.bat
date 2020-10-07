@@ -1,3 +1,4 @@
+@echo off
 REM Run this from an elevated command prompt
 
 REM -------------------------------------------
