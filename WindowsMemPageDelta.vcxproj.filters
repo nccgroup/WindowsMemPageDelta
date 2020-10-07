@@ -16,6 +16,9 @@
     <Filter Include="PreBuild">
       <UniqueIdentifier>{531c7a41-ee64-4cb8-bf10-6c56b6304b53}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Install">
+      <UniqueIdentifier>{0239c586-5244-4c31-9123-ea8a529b57b0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WindowsMemPageDelta.cpp">
@@ -57,6 +60,9 @@
   <ItemGroup>
     <None Include="Manifestcompile.bat">
       <Filter>PreBuild</Filter>
+    </None>
+    <None Include="Install.bat">
+      <Filter>Install</Filter>
     </None>
   </ItemGroup>
 </Project>
